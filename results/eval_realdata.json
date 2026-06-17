@@ -1,0 +1,548 @@
+{
+  "total": 39,
+  "with_gt": 39,
+  "FULL": 11,
+  "PARTIAL": 22,
+  "NONE": 6,
+  "base_ok": 32,
+  "rows": [
+    {
+      "csv": "airpass.csv",
+      "n": 144,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "FULL",
+      "P_gate": 0.0018,
+      "p_combo": 0.0062
+    },
+    {
+      "csv": "deaths.csv",
+      "n": 72,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "NONE",
+      "P_gate": 0.939,
+      "p_combo": 0.392
+    },
+    {
+      "csv": "German_consumption.csv",
+      "n": 93,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "FULL",
+      "P_gate": 0.0009,
+      "p_combo": 0.0036
+    },
+    {
+      "csv": "GermanGNP.csv",
+      "n": 88,
+      "exp_base": "deterministic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "deterministic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "PARTIAL",
+      "P_gate": 0.0007,
+      "p_combo": 0.8562
+    },
+    {
+      "csv": "INDPRO.csv",
+      "n": 372,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "FULL",
+      "P_gate": 0.0018,
+      "p_combo": 0.0028
+    },
+    {
+      "csv": "np_cpi.csv",
+      "n": 129,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0007,
+      "p_combo": 0.0024
+    },
+    {
+      "csv": "np_employmt.csv",
+      "n": 99,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0009,
+      "p_combo": 0.0019
+    },
+    {
+      "csv": "np_gnpdefl.csv",
+      "n": 100,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0012,
+      "p_combo": 0.0011
+    },
+    {
+      "csv": "np_gnpperca.csv",
+      "n": 80,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0012,
+      "p_combo": 0.0012
+    },
+    {
+      "csv": "np_indprod.csv",
+      "n": 129,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0009,
+      "p_combo": 0.0025
+    },
+    {
+      "csv": "np_interest.csv",
+      "n": 89,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "PARTIAL",
+      "P_gate": 0.0007,
+      "p_combo": 0.9714
+    },
+    {
+      "csv": "np_M.csv",
+      "n": 100,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "PARTIAL",
+      "P_gate": 0.0014,
+      "p_combo": 0.7278
+    },
+    {
+      "csv": "np_nomgnp.csv",
+      "n": 80,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0012,
+      "p_combo": 0.0008
+    },
+    {
+      "csv": "np_realgnp.csv",
+      "n": 80,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0008,
+      "p_combo": 0.0042
+    },
+    {
+      "csv": "np_realwag.csv",
+      "n": 89,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0013,
+      "p_combo": 0.0023
+    },
+    {
+      "csv": "np_sp500.csv",
+      "n": 118,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0011,
+      "p_combo": 0.2694
+    },
+    {
+      "csv": "np_unemploy.csv",
+      "n": 99,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.4126,
+      "p_combo": 0.4635
+    },
+    {
+      "csv": "np_velocity.csv",
+      "n": 120,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "mean_shift"
+      ],
+      "path": "combo",
+      "match": "PARTIAL",
+      "P_gate": 0.0009,
+      "p_combo": 0.5334
+    },
+    {
+      "csv": "np_wages.csv",
+      "n": 89,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0011,
+      "p_combo": 0.0018
+    },
+    {
+      "csv": "Polish_productivity.csv",
+      "n": 117,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0076,
+      "p_combo": 0.0029
+    },
+    {
+      "csv": "RealInt_dataframe.csv",
+      "n": 103,
+      "exp_base": "stationary",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "NONE",
+      "P_gate": 0.0091,
+      "p_combo": 1.0
+    },
+    {
+      "csv": "rec_dataframe.csv",
+      "n": 453,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.1246,
+      "p_combo": 0.5247
+    },
+    {
+      "csv": "soi_dataframe.csv",
+      "n": 453,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.4326,
+      "p_combo": 0.9992
+    },
+    {
+      "csv": "strikes.csv",
+      "n": 30,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.7873,
+      "p_combo": 0.9935
+    },
+    {
+      "csv": "sunspots.csv",
+      "n": 100,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.194,
+      "p_combo": 0.0158
+    },
+    {
+      "csv": "tcpd_debt_ireland.csv",
+      "n": 21,
+      "exp_base": "deterministic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "NONE",
+      "P_gate": 0.1862,
+      "p_combo": 0.9351
+    },
+    {
+      "csv": "tcpd_lga_passengers.csv",
+      "n": 468,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "deterministic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "NONE",
+      "P_gate": 0.0131,
+      "p_combo": 0.0565
+    },
+    {
+      "csv": "tcpd_nile.csv",
+      "n": 100,
+      "exp_base": "stationary",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "PARTIAL",
+      "P_gate": 0.1366,
+      "p_combo": 0.9997
+    },
+    {
+      "csv": "tcpd_ozone.csv",
+      "n": 54,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "trend_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "mean_shift"
+      ],
+      "path": "combo",
+      "match": "PARTIAL",
+      "P_gate": 0.0206,
+      "p_combo": 0.9723
+    },
+    {
+      "csv": "tcpd_robocalls.csv",
+      "n": 52,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "PARTIAL",
+      "P_gate": 0.0594,
+      "p_combo": 0.3034
+    },
+    {
+      "csv": "tcpd_seatbelts.csv",
+      "n": 192,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [
+        "mean_shift"
+      ],
+      "path": "single_forced_anom_only_trick",
+      "match": "PARTIAL",
+      "P_gate": 0.0134,
+      "p_combo": 0.021
+    },
+    {
+      "csv": "UNRATE.csv",
+      "n": 372,
+      "exp_base": "stochastic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "FULL",
+      "P_gate": 0.0082,
+      "p_combo": 0.0074
+    },
+    {
+      "csv": "US_investment.csv",
+      "n": 104,
+      "exp_base": "stationary",
+      "exp_anoms": [],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "FULL",
+      "P_gate": 0.9764,
+      "p_combo": 0.0171
+    },
+    {
+      "csv": "uspop.csv",
+      "n": 21,
+      "exp_base": "deterministic_trend",
+      "exp_anoms": [],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "NONE",
+      "P_gate": 0.0704,
+      "p_combo": 0.8299
+    },
+    {
+      "csv": "W1.csv",
+      "n": 45,
+      "exp_base": "stationary",
+      "exp_anoms": [
+        "point_anomaly"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "PARTIAL",
+      "P_gate": 0.8843,
+      "p_combo": 0.0131
+    },
+    {
+      "csv": "W2.csv",
+      "n": 302,
+      "exp_base": "stationary",
+      "exp_anoms": [
+        "variance_shift"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [
+        "mean_shift"
+      ],
+      "path": "single_forced_anom_only_trick",
+      "match": "PARTIAL",
+      "P_gate": 0.0263,
+      "p_combo": 0.1006
+    },
+    {
+      "csv": "W3.csv",
+      "n": 82,
+      "exp_base": "stationary",
+      "exp_anoms": [
+        "variance_shift"
+      ],
+      "pred_base": "stationary",
+      "pred_anoms": [],
+      "path": "stat_gate",
+      "match": "PARTIAL",
+      "P_gate": 0.4599,
+      "p_combo": 0.9965
+    },
+    {
+      "csv": "W5.csv",
+      "n": 71,
+      "exp_base": "deterministic_trend",
+      "exp_anoms": [
+        "mean_shift"
+      ],
+      "pred_base": "stochastic_trend",
+      "pred_anoms": [],
+      "path": "single",
+      "match": "NONE",
+      "P_gate": 0.0033,
+      "p_combo": 0.0018
+    },
+    {
+      "csv": "W6.csv",
+      "n": 114,
+      "exp_base": "deterministic_trend",
+      "exp_anoms": [
+        "variance_shift"
+      ],
+      "pred_base": "deterministic_trend",
+      "pred_anoms": [
+        "variance_shift"
+      ],
+      "path": "combo",
+      "match": "FULL",
+      "P_gate": 0.0043,
+      "p_combo": 0.9739
+    }
+  ]
+}

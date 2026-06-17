@@ -1,0 +1,14 @@
+{
+  "model_name": "stationarity_gate",
+  "best_clf": "XGBoost",
+  "val_scores": {
+    "LightGBM": 0.9468599033816425,
+    "XGBoost": 0.9565217391304348,
+    "MLP": 0.8942307692307693
+  },
+  "test_f1": 0.9677,
+  "test_acc": 0.9672,
+  "pos": 1000,
+  "neg": 980,
+  "n_features": 777
+}

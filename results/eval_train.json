@@ -1,0 +1,212 @@
+{
+  "total": 580,
+  "FULL": 428,
+  "PARTIAL": 127,
+  "NONE": 25,
+  "full_pct": 73.79,
+  "per_group": {
+    "1": {
+      "name": "G01_stationary",
+      "FULL": 20,
+      "PARTIAL": 0,
+      "NONE": 0,
+      "total": 20
+    },
+    "2": {
+      "name": "G02_det_trend",
+      "FULL": 17,
+      "PARTIAL": 3,
+      "NONE": 0,
+      "total": 20
+    },
+    "3": {
+      "name": "G03_stoch_trend",
+      "FULL": 11,
+      "PARTIAL": 3,
+      "NONE": 6,
+      "total": 20
+    },
+    "4": {
+      "name": "G04_volatility",
+      "FULL": 13,
+      "PARTIAL": 2,
+      "NONE": 5,
+      "total": 20
+    },
+    "5": {
+      "name": "G05_anom_only_collective",
+      "FULL": 15,
+      "PARTIAL": 5,
+      "NONE": 0,
+      "total": 20
+    },
+    "6": {
+      "name": "G06_anom_only_mean",
+      "FULL": 15,
+      "PARTIAL": 5,
+      "NONE": 0,
+      "total": 20
+    },
+    "7": {
+      "name": "G07_anom_only_point",
+      "FULL": 17,
+      "PARTIAL": 3,
+      "NONE": 0,
+      "total": 20
+    },
+    "8": {
+      "name": "G08_anom_only_trend_shift",
+      "FULL": 4,
+      "PARTIAL": 13,
+      "NONE": 3,
+      "total": 20
+    },
+    "9": {
+      "name": "G09_anom_only_variance",
+      "FULL": 15,
+      "PARTIAL": 4,
+      "NONE": 1,
+      "total": 20
+    },
+    "10": {
+      "name": "G10_det_collective",
+      "FULL": 19,
+      "PARTIAL": 1,
+      "NONE": 0,
+      "total": 20
+    },
+    "11": {
+      "name": "G11_det_mean",
+      "FULL": 14,
+      "PARTIAL": 5,
+      "NONE": 1,
+      "total": 20
+    },
+    "12": {
+      "name": "G12_det_point",
+      "FULL": 19,
+      "PARTIAL": 1,
+      "NONE": 0,
+      "total": 20
+    },
+    "13": {
+      "name": "G13_det_trend_shift",
+      "FULL": 10,
+      "PARTIAL": 10,
+      "NONE": 0,
+      "total": 20
+    },
+    "14": {
+      "name": "G14_det_variance",
+      "FULL": 17,
+      "PARTIAL": 3,
+      "NONE": 0,
+      "total": 20
+    },
+    "15": {
+      "name": "G15_stoch_collective",
+      "FULL": 18,
+      "PARTIAL": 2,
+      "NONE": 0,
+      "total": 20
+    },
+    "16": {
+      "name": "G16_stoch_mean",
+      "FULL": 13,
+      "PARTIAL": 6,
+      "NONE": 1,
+      "total": 20
+    },
+    "17": {
+      "name": "G17_stoch_point",
+      "FULL": 17,
+      "PARTIAL": 3,
+      "NONE": 0,
+      "total": 20
+    },
+    "18": {
+      "name": "G18_stoch_trend_shift",
+      "FULL": 4,
+      "PARTIAL": 13,
+      "NONE": 3,
+      "total": 20
+    },
+    "19": {
+      "name": "G19_stoch_variance",
+      "FULL": 15,
+      "PARTIAL": 5,
+      "NONE": 0,
+      "total": 20
+    },
+    "20": {
+      "name": "G20_vol_collective",
+      "FULL": 12,
+      "PARTIAL": 8,
+      "NONE": 0,
+      "total": 20
+    },
+    "21": {
+      "name": "G21_vol_mean",
+      "FULL": 16,
+      "PARTIAL": 4,
+      "NONE": 0,
+      "total": 20
+    },
+    "22": {
+      "name": "G22_vol_point",
+      "FULL": 14,
+      "PARTIAL": 6,
+      "NONE": 0,
+      "total": 20
+    },
+    "23": {
+      "name": "G23_vol_trend_shift",
+      "FULL": 9,
+      "PARTIAL": 9,
+      "NONE": 2,
+      "total": 20
+    },
+    "24": {
+      "name": "G24_vol_variance",
+      "FULL": 17,
+      "PARTIAL": 3,
+      "NONE": 0,
+      "total": 20
+    },
+    "25": {
+      "name": "G25_multi_col_mean",
+      "FULL": 16,
+      "PARTIAL": 3,
+      "NONE": 1,
+      "total": 20
+    },
+    "26": {
+      "name": "G26_multi_col_point",
+      "FULL": 20,
+      "PARTIAL": 0,
+      "NONE": 0,
+      "total": 20
+    },
+    "27": {
+      "name": "G27_multi_mean_variance",
+      "FULL": 16,
+      "PARTIAL": 2,
+      "NONE": 2,
+      "total": 20
+    },
+    "28": {
+      "name": "G28_multi_point_variance",
+      "FULL": 16,
+      "PARTIAL": 4,
+      "NONE": 0,
+      "total": 20
+    },
+    "29": {
+      "name": "G29_multi_point_trend",
+      "FULL": 19,
+      "PARTIAL": 1,
+      "NONE": 0,
+      "total": 20
+    }
+  }
+}

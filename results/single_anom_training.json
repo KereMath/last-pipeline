@@ -1,0 +1,72 @@
+{
+  "collective_anomaly": {
+    "model_name": "single_collective_anomaly",
+    "best_clf": "LightGBM",
+    "val_scores": {
+      "LightGBM": 0.9950248756218906,
+      "XGBoost": 0.9950248756218906,
+      "MLP": 0.9320388349514563
+    },
+    "test_f1": 0.99,
+    "test_acc": 0.99,
+    "pos": 1000,
+    "neg": 1000,
+    "n_features": 777
+  },
+  "mean_shift": {
+    "model_name": "single_mean_shift",
+    "best_clf": "LightGBM",
+    "val_scores": {
+      "LightGBM": 0.9230769230769231,
+      "XGBoost": 0.8932038834951457,
+      "MLP": 0.8317757009345794
+    },
+    "test_f1": 0.9212,
+    "test_acc": 0.92,
+    "pos": 1000,
+    "neg": 1000,
+    "n_features": 777
+  },
+  "point_anomaly": {
+    "model_name": "single_point_anomaly",
+    "best_clf": "LightGBM",
+    "val_scores": {
+      "LightGBM": 1.0,
+      "XGBoost": 1.0,
+      "MLP": 0.9751243781094527
+    },
+    "test_f1": 1.0,
+    "test_acc": 1.0,
+    "pos": 1000,
+    "neg": 1000,
+    "n_features": 777
+  },
+  "trend_shift": {
+    "model_name": "single_trend_shift",
+    "best_clf": "LightGBM",
+    "val_scores": {
+      "LightGBM": 0.9801980198019802,
+      "XGBoost": 0.9751243781094527,
+      "MLP": 0.9253731343283582
+    },
+    "test_f1": 0.9545,
+    "test_acc": 0.955,
+    "pos": 1000,
+    "neg": 1000,
+    "n_features": 777
+  },
+  "variance_shift": {
+    "model_name": "single_variance_shift",
+    "best_clf": "LightGBM",
+    "val_scores": {
+      "LightGBM": 0.97,
+      "XGBoost": 0.9644670050761421,
+      "MLP": 0.8235294117647058
+    },
+    "test_f1": 0.9529,
+    "test_acc": 0.9525,
+    "pos": 1000,
+    "neg": 1000,
+    "n_features": 777
+  }
+}

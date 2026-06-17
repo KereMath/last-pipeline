@@ -1,0 +1,25 @@
+{
+  "anom_results": {
+    "collective_anomaly": {
+      "f1": 0.9794,
+      "acc": 0.9914
+    },
+    "mean_shift": {
+      "f1": 0.8298,
+      "acc": 0.931
+    },
+    "point_anomaly": {
+      "f1": 1.0,
+      "acc": 1.0
+    },
+    "trend_shift": {
+      "f1": 0.9494,
+      "acc": 0.9828
+    },
+    "variance_shift": {
+      "f1": 0.9184,
+      "acc": 0.9655
+    }
+  },
+  "n_meta_samples": 2320
+}
