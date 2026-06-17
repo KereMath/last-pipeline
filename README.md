@@ -624,6 +624,23 @@ last-pipeline/
 
 Bu pipeline'ı geliştirirken denenenler ve neden o kararların verildiği — gelecekteki tekrarları önlemek için.
 
+### Denenen tüm metotlar — özet liste
+
+| # | Metot | Amaç | Sonuç | Durum |
+|---|---|---|---|---|
+| 1 | Eksik 5 multi grup (G30-G34) | C(5,2)=10 tam, multi temsili | trend_shift 1→4 grup, F1 0.92 | ✅ tutuldu |
+| 2 | Katmanlı uzunluk (LEN_TIERS 50-400) | kısa/uzun temsili | dengeli dağılım | ✅ tutuldu |
+| 3 | trend_shift 3 change-type | NP kademeli shift temsili | sentetikte iyileşti, NP'de yetmedi | ✅ tutuldu |
+| 4 | Anomali ölçek randomizasyonu | şiddet çeşitliliği | — | ✅ tutuldu |
+| 5 | variance ölçek daraltma 3.0→2.0 | airpass/German variance FP | net-nötr (FP feature confusion'ı) | ⚪ tutuldu |
+| 6 | Joint threshold sweep (17 param, coord. descent) | eşik/alpha optimize | train FULL +13-14 | ✅ kullanılıyor |
+| 7 | **Dual-view feature** (raw+detrend/deseason residual) | base maskeleme + variance FP | realdata kötüleşti (FULL 10→8) | ❌ reddedildi |
+| 8 | Teşhis: PCA + LDA + kNN view analizi | hangi view base'i ayırır | raw > residual > dual | 📊 kanıt |
+| 9 | Realdata eşik probu (anom threshold tarama) | trend_shift recall tavanı | NP'de 3/11 (sinyal yok) | 📊 kanıt |
+| 10 | Decision-logic rescue (base_meta→raw_base argmax) | base confusion düzelt | base binary de şaşırıyor (G23: det≠vol) | ❌ çalışmaz |
+
+> Özet: **modelleme tekniğini değiştiren her şey (5,7,10) kaybetti** → legacy raw+GBT korundu. **Veri/kapsamı iyileştiren her şey (1-4) tutuldu.** Eşik optimizasyonu (6) standart parça. 8-9-10 teşhis/eleme.
+
 ### Verdict — en iyi metot hangisi?
 **Teknik olarak en iyi metot = legacy yöntem** (raw single-view tsfresh → GBT binary ensemble → meta-learner). Denenen hiçbir alternatif (dual-view feature-eng, residual, ölçek ayarı) bunu **geçemedi**; aksine feature-eng realdata'yı kötüleştirdi. Final state = **legacy tekniğin aynısı** + iki *veri/kapsam* iyileştirmesi (tam C(5,2)=10 taksonomi + zengin/çeşitli üretim). Yani katkı modelleme tekniğinde değil, **eksiksiz ve daha temsili veride.**
 
