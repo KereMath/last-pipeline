@@ -1,0 +1,404 @@
+{
+  "n": 39,
+  "adf_kpss_stationarity_acc": 0.872,
+  "ruptures_anom_presence": {
+    "precision": 0.741,
+    "recall": 0.8,
+    "f1": 0.769,
+    "tp": 20,
+    "fp": 7,
+    "fn": 5
+  },
+  "rows": [
+    {
+      "csv": "airpass.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.991880243437641,
+      "kpss_p": 0.1,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "deaths.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.102481220568649,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "German_consumption.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.9956768511211583,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "GermanGNP.csv",
+      "gt_base": "deterministic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9795135437534248,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "INDPRO.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.9840006617538943,
+      "kpss_p": 0.01,
+      "n_breaks": 3,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_cpi.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.99830260268071,
+      "kpss_p": 0.01,
+      "n_breaks": 3,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_employmt.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9186607961139982,
+      "kpss_p": 0.1,
+      "n_breaks": 3,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_gnpdefl.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9954142714674548,
+      "kpss_p": 0.01,
+      "n_breaks": 3,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_gnpperca.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9093071869429236,
+      "kpss_p": 0.1,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_indprod.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.6885588832171291,
+      "kpss_p": 0.03197810281160611,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_interest.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.7706190606052445,
+      "kpss_p": 0.01,
+      "n_breaks": 1,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_M.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9721778465370422,
+      "kpss_p": 0.0966352633368506,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_nomgnp.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.983647121855011,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_realgnp.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9454752839329124,
+      "kpss_p": 0.07241312152219812,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_realwag.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.8078942495284542,
+      "kpss_p": 0.029059621639309252,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_sp500.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.9897718315786085,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_unemploy.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 0.0016881955827941352,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": true,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "np_velocity.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.07449540212869821,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "np_wages.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.992872738439594,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "Polish_productivity.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.7082643332093385,
+      "kpss_p": 0.1,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "RealInt_dataframe.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": true,
+      "adf_p": 0.5309497083383083,
+      "kpss_p": 0.01,
+      "n_breaks": 1,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "rec_dataframe.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 4.7233812728105535e-08,
+      "kpss_p": 0.1,
+      "n_breaks": 1,
+      "pred_stationary": true,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "soi_dataframe.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 4.037384325654934e-06,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": true,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "strikes.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 0.31351533366211526,
+      "kpss_p": 0.0989314995721078,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "sunspots.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 0.21678108694372933,
+      "kpss_p": 0.03974842044728227,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "tcpd_debt_ireland.csv",
+      "gt_base": "deterministic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.16971881640538033,
+      "kpss_p": 0.08104947230476389,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "tcpd_lga_passengers.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.3936648602283289,
+      "kpss_p": 0.03518250872914309,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "tcpd_nile.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": true,
+      "adf_p": 0.0011758879503871334,
+      "kpss_p": 0.01,
+      "n_breaks": 1,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "tcpd_ozone.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.642384467546061,
+      "kpss_p": 0.01,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "tcpd_robocalls.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.8903732315491999,
+      "kpss_p": 0.1,
+      "n_breaks": 1,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "tcpd_seatbelts.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.7198885155053041,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "UNRATE.csv",
+      "gt_base": "stochastic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.15942607981978701,
+      "kpss_p": 0.029301236862360358,
+      "n_breaks": 4,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "US_investment.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": false,
+      "adf_p": 8.750295664341459e-07,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": true,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "uspop.csv",
+      "gt_base": "deterministic_trend",
+      "gt_has_anom": false,
+      "adf_p": 0.9877442798172831,
+      "kpss_p": 0.012428495939028455,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "W1.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": true,
+      "adf_p": 0.0007282904300684649,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": true,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "W2.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": true,
+      "adf_p": 0.06749613967188195,
+      "kpss_p": 0.04601896096821911,
+      "n_breaks": 0,
+      "pred_stationary": false,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "W3.csv",
+      "gt_base": "stationary",
+      "gt_has_anom": true,
+      "adf_p": 0.005027290123834029,
+      "kpss_p": 0.1,
+      "n_breaks": 0,
+      "pred_stationary": true,
+      "pred_has_anom": false
+    },
+    {
+      "csv": "W5.csv",
+      "gt_base": "deterministic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.29314303470474584,
+      "kpss_p": 0.1,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    },
+    {
+      "csv": "W6.csv",
+      "gt_base": "deterministic_trend",
+      "gt_has_anom": true,
+      "adf_p": 0.42597088137510564,
+      "kpss_p": 0.017988266630591002,
+      "n_breaks": 2,
+      "pred_stationary": false,
+      "pred_has_anom": true
+    }
+  ]
+}

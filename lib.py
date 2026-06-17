@@ -30,11 +30,82 @@ def read_series(csv_path: Path) -> np.ndarray:
     return np.array([])
 
 
+# ---- Klasik ekonometrik test feature'lari (hibrit: tsfresh + klasik) ----
+# Validasyon (experiments/classical_signal_check.py): ruptures kacirdigimiz 5/5
+# mean_shift'i yakaliyor; ADF+KPSS stationarity %87 baseline. ZA NP'de zayif (3/11)
+# ama teorik olarak dogru arac -> dahil edildi.
+CLASSICAL_FEATURE_NAMES = [
+    "adf_stat", "adf_p", "kpss_stat", "kpss_p",
+    "za_stat", "za_p", "za_break_loc",
+    "rpt_n_breaks", "rpt_max_mean_jump", "rpt_max_var_ratio", "rpt_break_loc",
+    "var_2nd_over_1st",
+]
+
+
+def _znorm(s: np.ndarray) -> np.ndarray:
+    x = np.asarray(s, dtype=float)
+    sd = x.std()
+    return (x - x.mean()) / sd if sd > 1e-9 else x - x.mean()
+
+
+def classical_features(s: np.ndarray) -> np.ndarray:
+    """ADF + KPSS + Zivot-Andrews + ruptures -> 12 skaler (olcek-bagimsiz, z-norm iceride).
+    Sira CLASSICAL_FEATURE_NAMES ile ayni. Hata durumunda notr default."""
+    from statsmodels.tsa.stattools import adfuller, kpss, zivot_andrews
+    import ruptures as rpt
+
+    x = _znorm(s); n = len(x)
+    f = {k: 0.0 for k in CLASSICAL_FEATURE_NAMES}
+    f["adf_p"] = 1.0; f["kpss_p"] = 0.1; f["za_p"] = 1.0
+    f["za_break_loc"] = 0.5; f["rpt_max_var_ratio"] = 1.0
+    f["rpt_break_loc"] = 0.5; f["var_2nd_over_1st"] = 1.0
+    if n < 12:
+        return np.array([f[k] for k in CLASSICAL_FEATURE_NAMES])
+
+    try:
+        a = adfuller(x, autolag="AIC"); f["adf_stat"], f["adf_p"] = float(a[0]), float(a[1])
+    except Exception: pass
+    try:
+        k = kpss(x, regression="ct", nlags="auto"); f["kpss_stat"], f["kpss_p"] = float(k[0]), float(k[1])
+    except Exception: pass
+    try:
+        za = zivot_andrews(x, regression="ct", autolag=None, maxlag=2)  # hizli mod
+        f["za_stat"], f["za_p"], f["za_break_loc"] = float(za[0]), float(za[1]), float(za[4]) / n
+    except Exception: pass
+    try:
+        bks = rpt.Pelt(model="rbf", min_size=max(5, n // 20)).fit(x).predict(pen=2 * np.log(n))
+        cps = [b for b in bks if 0 < b < n]
+        f["rpt_n_breaks"] = float(len(cps))
+        bounds = [0] + cps + [n]
+        segs = [x[bounds[i]:bounds[i + 1]] for i in range(len(bounds) - 1)]
+        means = [seg.mean() for seg in segs if len(seg) > 0]
+        vars = [seg.var() + 1e-9 for seg in segs if len(seg) > 0]
+        if len(means) >= 2:
+            f["rpt_max_mean_jump"] = float(max(abs(means[i + 1] - means[i]) for i in range(len(means) - 1)))
+            f["rpt_max_var_ratio"] = float(max(vars) / min(vars))
+        if cps:
+            # en buyuk mean-jump break'inin konumu
+            jumps = [abs(means[i + 1] - means[i]) for i in range(len(means) - 1)]
+            f["rpt_break_loc"] = float(cps[int(np.argmax(jumps))]) / n if jumps else cps[0] / n
+    except Exception: pass
+    try:
+        h = n // 2
+        f["var_2nd_over_1st"] = float((x[h:].var() + 1e-9) / (x[:h].var() + 1e-9))
+    except Exception: pass
+
+    return np.array([f[k] for k in CLASSICAL_FEATURE_NAMES])
+
+
 def extract_batch(series_list: List[np.ndarray], n_jobs: int = 4) -> np.ndarray:
-    """Tek tsfresh extraction batch'i (raw single-view).
-    NOT: dual-view (raw+detrend/deseason residual) denendi ama base ayrim gucunu
-    dusurdugu icin (LDA 0.57->0.47, realdata base_ok 32->29) geri alindi.
-    Bkz. experiments/diag_views.py."""
+    """Raw single-view tsfresh (777). FINAL pipeline bunu kullanir.
+
+    NOT — denenen 2 feature genislemesi de realdata'yi iyilestirmedi, geri alindi:
+    1. dual-view (raw + detrend/deseason residual): base ayrimini DUSURDU
+       (LDA 0.57->0.47, realdata base_ok 32->29). Bkz. experiments/diag_views.py.
+    2. hibrit (raw + classical_features ADF/KPSS/ZA/ruptures): NOTR/biraz kotu
+       (base_ok 33->32); validasyonda ruptures sinyali vardi ama sentetik->gercek
+       domain gap nedeniyle uctan uca transfer olmadi. classical_features() asagida
+       baseline/teshis icin korunuyor ama extract_batch'e dahil DEGIL."""
     dfs = []
     for i, s in enumerate(series_list):
         dfs.append(pd.DataFrame({"id": i, "time": np.arange(len(s)), "value": s.astype(float)}))

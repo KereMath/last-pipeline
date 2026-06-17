@@ -579,7 +579,8 @@ last-pipeline/
 │   ├── meta_training.json
 │   ├── eval_train.json             (680 örnek, %68.68 pre-sweep FULL)
 │   ├── eval_realdata.json          (39 GT'li, 11 FULL, base_ok 33)
-│   └── threshold_sweep.json        (sweep: %70.6 FULL)
+│   ├── threshold_sweep.json        (sweep: %70.6 FULL)
+│   └── baselines.json              (ADF+KPSS %87, ruptures F1 0.77)
 │
 ├── runner/                         (9 final script)
 │   ├── 10_generate_data.py
@@ -592,9 +593,11 @@ last-pipeline/
 │   ├── 51_eval_realdata.py
 │   └── 60_threshold_sweep.py
 │
-└── experiments/                    (teşhis — pipeline'a dahil değil)
+└── experiments/                    (teşhis/baseline — pipeline'a dahil değil)
     ├── diag_views.py               (PCA + LDA + kNN view ayrım gücü)
     ├── meta_view_test.py           (cached base_meta raw vs dual)
+    ├── classical_signal_check.py   (ADF/KPSS/ZA/ruptures sinyal validasyonu)
+    ├── baselines.py                (klasik yöntem baseline'ları → baselines.json)
     └── pca_base_views.png          (base confusion görseli)
 ```
 
@@ -638,8 +641,27 @@ Bu pipeline'ı geliştirirken denenenler ve neden o kararların verildiği — g
 | 8 | Teşhis: PCA + LDA + kNN view analizi | hangi view base'i ayırır | raw > residual > dual | 📊 kanıt |
 | 9 | Realdata eşik probu (anom threshold tarama) | trend_shift recall tavanı | NP'de 3/11 (sinyal yok) | 📊 kanıt |
 | 10 | Decision-logic rescue (base_meta→raw_base argmax) | base confusion düzelt | base binary de şaşırıyor (G23: det≠vol) | ❌ çalışmaz |
+| 11 | **Hibrit klasik feature** (ADF/KPSS/Zivot-Andrews/ruptures, +12 skaler) | mean_shift/trend_shift recall + base | realdata nötr/biraz kötü (base_ok 33→32); validasyon vardı, transfer olmadı | ❌ reddedildi |
 
-> Özet: **modelleme tekniğini değiştiren her şey (5,7,10) kaybetti** → legacy raw+GBT korundu. **Veri/kapsamı iyileştiren her şey (1-4) tutuldu.** Eşik optimizasyonu (6) standart parça. 8-9-10 teşhis/eleme.
+> Özet: **3 feature müdahalesinin (7 dual-view, 11 hibrit, 5 ölçek) üçü de realdata'yı iyileştirmedi** → legacy raw single-view tsfresh + GBT korundu. **Veri/kapsamı iyileştiren her şey (1-4) tutuldu.** Eşik optimizasyonu (6) standart parça. 8-9-10 teşhis/eleme.
+
+### Hibrit klasik feature deneyi (detaylı) — validasyon vardı, transfer olmadı
+Hipotez: klasik ekonometrik test çıktıları (ADF/KPSS/Zivot-Andrews) + change-point (ruptures) feature olarak eklenirse, tsfresh'in kaçırdığı sinyali verir.
+- **Validasyon pozitifti** (`experiments/classical_signal_check.py`): kaçırdığımız **5/5 mean_shift** dosyasında ruptures change-point buldu; tcpd_nile'da ZA break = 0.27 (Aswan Barajı 1898 ✓).
+- **Ama uçtan uca işe yaramadı:** retrain sonrası realdata base_ok 33→32, FULL 11→11 (sabit), train 480→465. mean_shift'lerden sadece tcpd_nile yakalandı (o da base'i bozuldu).
+- **Neden:** Yine **domain gap** — sentetik mean_shift'in klasik-test imzası ile gerçek mean_shift'inki (baraj, yasa değişikliği) farklı; model sentetikte öğrendiği eşlemeyi gerçeğe taşıyamadı.
+- Kod korundu: `lib.classical_features()` (extract_batch'e dahil DEĞİL) + `experiments/baselines.py`.
+
+### Baseline karşılaştırması (klasik yöntemler tek başına)
+`experiments/baselines.py` → `results/baselines.json`:
+
+| Yöntem | Görev | Sonuç |
+|---|---|---|
+| **ADF + KPSS** | stationary mı? (gate/base ekseni) | **%87** doğruluk (34/39) |
+| Pipeline (bizim) | base sınıflandırma (4-yönlü) | %85 base_ok (33/39) |
+| **ruptures (PELT-rbf)** | anomali var mı? (varlık) | F1=**0.77** (P=0.74, R=0.80) |
+
+**Yorum:** Basit ADF+KPSS, stationarity ekseninde tüm pipeline'la **başa baş** (%87 vs %85). Bu, (a) bu eksende klasik yöntemlerin güçlü olduğunu, (b) pipeline'ın asıl katma değerinin **çok-sınıflı base + tipli anomali** ayrımında olduğunu gösterir. ruptures anomali *varlığını* iyi bulur (R=0.80) ama *tipini* (mean/var/trend) ayırt etmez — pipeline bunu yapar.
 
 ### Verdict — en iyi metot hangisi?
 **Teknik olarak en iyi metot = legacy yöntem** (raw single-view tsfresh → GBT binary ensemble → meta-learner). Denenen hiçbir alternatif (dual-view feature-eng, residual, ölçek ayarı) bunu **geçemedi**; aksine feature-eng realdata'yı kötüleştirdi. Final state = **legacy tekniğin aynısı** + iki *veri/kapsam* iyileştirmesi (tam C(5,2)=10 taksonomi + zengin/çeşitli üretim). Yani katkı modelleme tekniğinde değil, **eksiksiz ve daha temsili veride.**
