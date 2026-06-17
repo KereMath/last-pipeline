@@ -3,12 +3,12 @@
     "model_name": "single_collective_anomaly",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9950248756218906,
-      "XGBoost": 0.9950248756218906,
-      "MLP": 0.9320388349514563
+      "LightGBM": 0.9746192893401016,
+      "XGBoost": 0.9690721649484536,
+      "MLP": 0.865979381443299
     },
-    "test_f1": 0.99,
-    "test_acc": 0.99,
+    "test_f1": 0.9925,
+    "test_acc": 0.9925,
     "pos": 1000,
     "neg": 1000,
     "n_features": 777
@@ -17,12 +17,12 @@
     "model_name": "single_mean_shift",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9230769230769231,
-      "XGBoost": 0.8932038834951457,
-      "MLP": 0.8317757009345794
+      "LightGBM": 0.9074074074074074,
+      "XGBoost": 0.8940092165898618,
+      "MLP": 0.8258706467661692
     },
-    "test_f1": 0.9212,
-    "test_acc": 0.92,
+    "test_f1": 0.896,
+    "test_acc": 0.895,
     "pos": 1000,
     "neg": 1000,
     "n_features": 777
@@ -31,9 +31,9 @@
     "model_name": "single_point_anomaly",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 1.0,
-      "XGBoost": 1.0,
-      "MLP": 0.9751243781094527
+      "LightGBM": 0.9950248756218906,
+      "XGBoost": 0.9900990099009901,
+      "MLP": 0.9658536585365853
     },
     "test_f1": 1.0,
     "test_acc": 1.0,
@@ -43,14 +43,14 @@
   },
   "trend_shift": {
     "model_name": "single_trend_shift",
-    "best_clf": "LightGBM",
+    "best_clf": "XGBoost",
     "val_scores": {
-      "LightGBM": 0.9801980198019802,
-      "XGBoost": 0.9751243781094527,
-      "MLP": 0.9253731343283582
+      "LightGBM": 0.9405940594059405,
+      "XGBoost": 0.96,
+      "MLP": 0.8910891089108911
     },
-    "test_f1": 0.9545,
-    "test_acc": 0.955,
+    "test_f1": 0.9487,
+    "test_acc": 0.9475,
     "pos": 1000,
     "neg": 1000,
     "n_features": 777
@@ -59,12 +59,12 @@
     "model_name": "single_variance_shift",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.97,
-      "XGBoost": 0.9644670050761421,
-      "MLP": 0.8235294117647058
+      "LightGBM": 0.9353233830845771,
+      "XGBoost": 0.9170731707317074,
+      "MLP": 0.7878787878787878
     },
-    "test_f1": 0.9529,
-    "test_acc": 0.9525,
+    "test_f1": 0.9554,
+    "test_acc": 0.955,
     "pos": 1000,
     "neg": 1000,
     "n_features": 777

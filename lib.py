@@ -31,7 +31,10 @@ def read_series(csv_path: Path) -> np.ndarray:
 
 
 def extract_batch(series_list: List[np.ndarray], n_jobs: int = 4) -> np.ndarray:
-    """Tek tsfresh extraction batch'i."""
+    """Tek tsfresh extraction batch'i (raw single-view).
+    NOT: dual-view (raw+detrend/deseason residual) denendi ama base ayrim gucunu
+    dusurdugu icin (LDA 0.57->0.47, realdata base_ok 32->29) geri alindi.
+    Bkz. experiments/diag_views.py."""
     dfs = []
     for i, s in enumerate(series_list):
         dfs.append(pd.DataFrame({"id": i, "time": np.arange(len(s)), "value": s.astype(float)}))

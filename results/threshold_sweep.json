@@ -1,116 +1,112 @@
 {
   "baseline": {
-    "FULL": 418,
-    "PARTIAL": 137,
-    "NONE": 25
+    "FULL": 467,
+    "PARTIAL": 167,
+    "NONE": 46
   },
   "final": {
-    "FULL": 428,
-    "PARTIAL": 127,
-    "NONE": 25
+    "FULL": 480,
+    "PARTIAL": 160,
+    "NONE": 40
   },
-  "delta": 10,
+  "delta": 13,
   "blend": {
-    "thr_stat_hard": 0.95,
-    "thr_router": 0.3,
-    "thr_base_meta_stat": 1.01,
-    "thr_anom_flip": -0.01,
     "alpha": {
-      "collective_anomaly": 0.75,
-      "mean_shift": 0.5,
-      "point_anomaly": 0.0,
+      "collective_anomaly": 0.0,
+      "mean_shift": 0.0,
+      "point_anomaly": 0.25,
       "trend_shift": 0.25,
-      "variance_shift": 0.0
+      "variance_shift": 0.5
     },
     "thr_anom_only": {
-      "collective_anomaly": 0.3,
-      "mean_shift": 0.3,
+      "collective_anomaly": 0.5,
+      "mean_shift": 0.5,
       "point_anomaly": 0.4,
       "trend_shift": 0.4,
-      "variance_shift": 0.6
+      "variance_shift": 0.3
     },
     "thr_combo": {
-      "collective_anomaly": 0.6,
-      "mean_shift": 0.7,
+      "collective_anomaly": 0.7,
+      "mean_shift": 0.8,
       "point_anomaly": 0.5,
-      "trend_shift": 0.4,
-      "variance_shift": 0.6
-    }
+      "trend_shift": 0.8,
+      "variance_shift": 0.8
+    },
+    "thr_stat_hard": 0.95,
+    "thr_router": 0.3
   },
   "history": [
     {
       "iter": 0,
       "step": "baseline",
-      "FULL": 418,
+      "FULL": 467,
       "blend": {
-        "thr_stat_hard": 0.95,
-        "thr_router": 0.3,
-        "thr_base_meta_stat": 1.01,
-        "thr_anom_flip": -0.01,
         "alpha": {
-          "collective_anomaly": 0.0,
+          "collective_anomaly": 0.5,
           "mean_shift": 0.5,
-          "point_anomaly": 0.0,
-          "trend_shift": 0.25,
+          "point_anomaly": 0.5,
+          "trend_shift": 0.5,
           "variance_shift": 0.5
         },
         "thr_anom_only": {
-          "collective_anomaly": 0.3,
-          "mean_shift": 0.3,
-          "point_anomaly": 0.3,
-          "trend_shift": 0.4,
-          "variance_shift": 0.7
+          "collective_anomaly": 0.5,
+          "mean_shift": 0.5,
+          "point_anomaly": 0.5,
+          "trend_shift": 0.5,
+          "variance_shift": 0.5
         },
         "thr_combo": {
-          "collective_anomaly": 0.3,
-          "mean_shift": 0.7,
-          "point_anomaly": 0.5,
-          "trend_shift": 0.4,
-          "variance_shift": 0.6
-        }
+          "collective_anomaly": 0.55,
+          "mean_shift": 0.55,
+          "point_anomaly": 0.55,
+          "trend_shift": 0.55,
+          "variance_shift": 0.55
+        },
+        "thr_stat_hard": 0.8,
+        "thr_router": 0.4
       }
     },
     {
       "iter": 1,
       "step": "stat_hard",
       "best": 0.95,
-      "FULL": 418
+      "FULL": 472
     },
     {
       "iter": 1,
       "step": "router",
       "best": 0.3,
-      "FULL": 418
+      "FULL": 472
     },
     {
       "iter": 1,
       "step": "collective_anomaly",
       "best_cfg": [
-        0.75,
-        0.3,
-        0.6
+        0.0,
+        0.5,
+        0.7
       ],
-      "FULL": 426
+      "FULL": 475
     },
     {
       "iter": 1,
       "step": "mean_shift",
       "best_cfg": [
+        0.0,
         0.5,
-        0.3,
-        0.7
+        0.8
       ],
-      "FULL": 426
+      "FULL": 477
     },
     {
       "iter": 1,
       "step": "point_anomaly",
       "best_cfg": [
-        0.0,
+        0.25,
         0.4,
         0.5
       ],
-      "FULL": 427
+      "FULL": 477
     },
     {
       "iter": 1,
@@ -118,61 +114,61 @@
       "best_cfg": [
         0.25,
         0.4,
-        0.4
+        0.8
       ],
-      "FULL": 427
+      "FULL": 479
     },
     {
       "iter": 1,
       "step": "variance_shift",
       "best_cfg": [
-        0.0,
-        0.6,
-        0.6
+        0.5,
+        0.3,
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "stat_hard",
       "best": 0.95,
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "router",
       "best": 0.3,
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "collective_anomaly",
       "best_cfg": [
-        0.75,
-        0.3,
-        0.6
+        0.0,
+        0.5,
+        0.7
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "mean_shift",
       "best_cfg": [
+        0.0,
         0.5,
-        0.3,
-        0.7
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "point_anomaly",
       "best_cfg": [
-        0.0,
+        0.25,
         0.4,
         0.5
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
@@ -180,61 +176,61 @@
       "best_cfg": [
         0.25,
         0.4,
-        0.4
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 2,
       "step": "variance_shift",
       "best_cfg": [
-        0.0,
-        0.6,
-        0.6
+        0.5,
+        0.3,
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "stat_hard",
       "best": 0.95,
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "router",
       "best": 0.3,
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "collective_anomaly",
       "best_cfg": [
-        0.75,
-        0.3,
-        0.6
+        0.0,
+        0.5,
+        0.7
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "mean_shift",
       "best_cfg": [
+        0.0,
         0.5,
-        0.3,
-        0.7
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "point_anomaly",
       "best_cfg": [
-        0.0,
+        0.25,
         0.4,
         0.5
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
@@ -242,19 +238,19 @@
       "best_cfg": [
         0.25,
         0.4,
-        0.4
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     },
     {
       "iter": 3,
       "step": "variance_shift",
       "best_cfg": [
-        0.0,
-        0.6,
-        0.6
+        0.5,
+        0.3,
+        0.8
       ],
-      "FULL": 428
+      "FULL": 480
     }
   ]
 }

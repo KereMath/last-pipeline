@@ -3,42 +3,42 @@
     "model_name": "base_deterministic_trend",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9054726368159204,
-      "XGBoost": 0.8944723618090452,
-      "MLP": 0.8768472906403941
+      "LightGBM": 0.9090909090909091,
+      "XGBoost": 0.9081632653061225,
+      "MLP": 0.8282828282828283
     },
-    "test_f1": 0.895,
-    "test_acc": 0.8942,
+    "test_f1": 0.862,
+    "test_acc": 0.8561,
     "pos": 996,
-    "neg": 989,
+    "neg": 980,
     "n_features": 777
   },
   "stochastic_trend": {
     "model_name": "base_stochastic_trend",
-    "best_clf": "XGBoost",
+    "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.8393782383419689,
-      "XGBoost": 0.8762886597938144,
-      "MLP": 0.8393782383419689
+      "LightGBM": 0.865979381443299,
+      "XGBoost": 0.8586387434554974,
+      "MLP": 0.8085106382978723
     },
-    "test_f1": 0.8519,
-    "test_acc": 0.8589,
+    "test_f1": 0.8962,
+    "test_acc": 0.8965,
     "pos": 996,
-    "neg": 989,
+    "neg": 980,
     "n_features": 777
   },
   "volatility": {
     "model_name": "base_volatility",
-    "best_clf": "XGBoost",
+    "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.8095238095238095,
-      "XGBoost": 0.8207547169811321,
-      "MLP": 0.7878787878787878
+      "LightGBM": 0.7904761904761904,
+      "XGBoost": 0.780952380952381,
+      "MLP": 0.7238095238095238
     },
-    "test_f1": 0.8241,
-    "test_acc": 0.8086,
+    "test_f1": 0.8227,
+    "test_acc": 0.8182,
     "pos": 996,
-    "neg": 989,
+    "neg": 980,
     "n_features": 777
   }
 }

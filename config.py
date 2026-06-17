@@ -1,6 +1,6 @@
 """
 newplanlast — Konfigurasyon
-29 grup veri taksonomisi + 14 binary base model + meta-learner.
+34 grup veri taksonomisi (C(5,2)=10 multi tam) + 14 binary base model + meta-learner.
 HERSEY SIFIRDAN EGITILECEK — eski model KULLANILMIYOR.
 """
 from pathlib import Path
@@ -26,10 +26,26 @@ for d in [GATE_MODELS_DIR, BASE_MODELS_DIR, SINGLE_ANOM_MODELS_DIR,
 # ---- Genel ayarlar ----
 N_PER_GROUP = 1000
 MIN_SERIES_LENGTH = 50
-LEN_RANGE = (80, 150)
+LEN_RANGE = (80, 150)  # (geriye uyum; uretim artik LEN_TIERS kullaniyor)
 RANDOM_STATE = 42
 TEST_SIZE = 0.20
 VALIDATION_SIZE = 0.10
+
+# ---- Uretim cesitliligi (anomalilerin daha iyi temsili icin) ----
+# Katmanli uzunluk: ~%25 short, %50 medium, %25 long (realdata 21-480 araliginda)
+LEN_TIERS = [((50, 80), 0.25), ((80, 180), 0.50), ((180, 400), 0.25)]
+
+# Anomali olcek araliklari (sabit yerine uniform sample) — README: variance 1.5 yetersizdi
+ANOM_SCALE_RANGES = {
+    "mean_shift":     (1.0, 2.5),
+    "variance_shift": (1.3, 2.0),  # 3.0 -> 2.0: genis aralik realdata'da variance FP uretiyordu (airpass/German)
+    "point":          (1.5, 3.0),
+    "collective":     (1.5, 3.0),
+}
+
+# trend_shift uretim cesitliligi (NP serileri kademeli magnitude shift icerir)
+TREND_SHIFT_CHANGE_TYPES = ["direction_change", "magnitude_change",
+                            "direction_and_magnitude_change"]
 
 # Sample size her binary model icin (balanced)
 N_SAMPLES_PER_MODEL = 1000  # pos + 1000 neg
@@ -42,7 +58,7 @@ ANOM_LABELS = ["collective_anomaly", "mean_shift", "point_anomaly",
 
 BASE_MODEL_NAMES = ["deterministic_trend", "stochastic_trend", "volatility"]  # 3 binary
 
-# ---- 29 grup taksonomisi ----
+# ---- 34 grup taksonomisi (G01-G29 + eklenen G30-G34 multi) ----
 # Format: (gid, name, subpath, spec, label)
 # label = (base, [anomalies])
 GROUPS = [
@@ -144,6 +160,23 @@ GROUPS = [
     (29, "G29_multi_point_trend", "G29_multi_point_trend",
         {"base": "stationary", "anomaly": "point", "break": "trend_shift"},
         ("anomaly_only", ["point_anomaly", "trend_shift"])),
+
+    # === EKSIK MULTI-ANOMALI (5) — C(5,2)=10'u tamamlar, base=anomaly_only ===
+    (30, "G30_multi_col_trend", "G30_multi_col_trend",
+        {"base": "stationary", "anomaly": "collective", "break": "trend_shift"},
+        ("anomaly_only", ["collective_anomaly", "trend_shift"])),
+    (31, "G31_multi_col_variance", "G31_multi_col_variance",
+        {"base": "stationary", "anomaly": "collective", "break": "variance_shift"},
+        ("anomaly_only", ["collective_anomaly", "variance_shift"])),
+    (32, "G32_multi_mean_point", "G32_multi_mean_point",
+        {"base": "stationary", "break": "mean_shift", "anomaly": "point"},
+        ("anomaly_only", ["mean_shift", "point_anomaly"])),
+    (33, "G33_multi_mean_trend", "G33_multi_mean_trend",
+        {"base": "stationary", "break_two": ["mean_shift", "trend_shift"]},
+        ("anomaly_only", ["mean_shift", "trend_shift"])),
+    (34, "G34_multi_trend_variance", "G34_multi_trend_variance",
+        {"base": "stationary", "break_two": ["trend_shift", "variance_shift"]},
+        ("anomaly_only", ["trend_shift", "variance_shift"])),
 ]
 
 # Hizli erisim
@@ -175,16 +208,17 @@ SINGLE_ANOM_POSITIVE_GROUPS = {
 
 # Multi-anom binary models (pozitif = MULTI-anom datasinda o anomalinin gectigi)
 # G25: col+mean, G26: col+point, G27: mean+var, G28: pt+var, G29: pt+trend
+# G30: col+trend, G31: col+var, G32: mean+pt, G33: mean+trend, G34: trend+var
 MULTI_ANOM_POSITIVE_GROUPS = {
-    "collective_anomaly": {25, 26},
-    "mean_shift":         {25, 27},
-    "point_anomaly":      {26, 28, 29},
-    "trend_shift":        {29},
-    "variance_shift":     {27, 28},
+    "collective_anomaly": {25, 26, 30, 31},
+    "mean_shift":         {25, 27, 32, 33},
+    "point_anomaly":      {26, 28, 29, 32},
+    "trend_shift":        {29, 30, 33, 34},
+    "variance_shift":     {27, 28, 31, 34},
 }
 
-# Multi gruplari (tum 5)
-MULTI_GROUPS = {25, 26, 27, 28, 29}
+# Multi gruplari (tum 10 = C(5,2))
+MULTI_GROUPS = {25, 26, 27, 28, 29, 30, 31, 32, 33, 34}
 
 # ---- Decision thresholds (sweep ile bulunacak, defaultlar) ----
 DEFAULT_THR_STAT_HARD = 0.80

@@ -1,25 +1,25 @@
 {
   "anom_results": {
     "collective_anomaly": {
-      "f1": 0.9794,
-      "acc": 0.9914
+      "f1": 0.9843,
+      "acc": 0.9926
     },
     "mean_shift": {
-      "f1": 0.8298,
-      "acc": 0.931
+      "f1": 0.7782,
+      "acc": 0.9026
     },
     "point_anomaly": {
-      "f1": 1.0,
-      "acc": 1.0
+      "f1": 0.9881,
+      "acc": 0.9945
     },
     "trend_shift": {
-      "f1": 0.9494,
-      "acc": 0.9828
+      "f1": 0.8923,
+      "acc": 0.9485
     },
     "variance_shift": {
-      "f1": 0.9184,
-      "acc": 0.9655
+      "f1": 0.9344,
+      "acc": 0.9688
     }
   },
-  "n_meta_samples": 2320
+  "n_meta_samples": 2720
 }

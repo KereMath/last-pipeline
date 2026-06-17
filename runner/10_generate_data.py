@@ -10,16 +10,27 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent.parent  # ceylanhoca/
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo koku
 
-from betise.core.generator import TimeSeriesGenerator
+from betise.core.generator import TimeSeriesGenerator  # pip ile kurulu
 from config import (
-    GROUPS, N_PER_GROUP, LEN_RANGE, DATA_GEN_DIR,
+    GROUPS, N_PER_GROUP, LEN_TIERS, DATA_GEN_DIR,
+    ANOM_SCALE_RANGES, TREND_SHIFT_CHANGE_TYPES,
 )
 
 SEED_BASE = 7000  # newplanlast seed
+
+
+def sample_length():
+    """Katmanli uzunluk: LEN_TIERS agirliklarina gore tier sec, aralikta randint."""
+    r = random.random()
+    cum = 0.0
+    for (lo, hi), w in LEN_TIERS:
+        cum += w
+        if r <= cum:
+            return random.randint(lo, hi)
+    (lo, hi), _ = LEN_TIERS[-1]
+    return random.randint(lo, hi)
 
 
 def gen_series(length, spec, seed):
@@ -67,12 +78,15 @@ def gen_series(length, spec, seed):
     for b_kind in breaks:
         sign = random.choice([-1, 1])
         if b_kind == "mean_shift":
-            df, _ = ts.generate_mean_shift(df, signs=[sign], location="middle", num_breaks=1, scale_factor=1.5)
+            sf = random.uniform(*ANOM_SCALE_RANGES["mean_shift"])
+            df, _ = ts.generate_mean_shift(df, signs=[sign], location="middle", num_breaks=1, scale_factor=sf)
         elif b_kind == "variance_shift":
-            df, _ = ts.generate_variance_shift(df, signs=[sign], location="middle", num_breaks=1, scale_factor=1.5)
+            sf = random.uniform(*ANOM_SCALE_RANGES["variance_shift"])
+            df, _ = ts.generate_variance_shift(df, signs=[sign], location="middle", num_breaks=1, scale_factor=sf)
         elif b_kind == "trend_shift":
+            ct = random.choice(TREND_SHIFT_CHANGE_TYPES)  # direction / magnitude / both
             df, _ = ts.generate_trend_shift(df, sign=sign, location="middle", num_breaks=1,
-                                              change_types=["direction_change"], scale_factor=1.0)
+                                              change_types=[ct], scale_factor=1.0)
 
     # 4. Anomaly (point / collective)
     anomalies = []
@@ -82,9 +96,11 @@ def gen_series(length, spec, seed):
         anomalies.extend(spec["anomaly_two"])
     for a_kind in anomalies:
         if a_kind == "point":
-            df, _ = ts.generate_point_anomaly(df, location="middle", scale_factor=2.0, is_spike=True)
+            sf = random.uniform(*ANOM_SCALE_RANGES["point"])
+            df, _ = ts.generate_point_anomaly(df, location="middle", scale_factor=sf, is_spike=True)
         elif a_kind == "collective":
-            df, _ = ts.generate_collective_anomalies(df, num_anomalies=1, location="middle", scale_factor=2.0)
+            sf = random.uniform(*ANOM_SCALE_RANGES["collective"])
+            df, _ = ts.generate_collective_anomalies(df, num_anomalies=1, location="middle", scale_factor=sf)
 
     return df["data"].values
 
@@ -103,7 +119,7 @@ def main():
         ok = 0
         fail = 0
         for i in range(N_PER_GROUP):
-            length = random.randint(LEN_RANGE[0], LEN_RANGE[1])
+            length = sample_length()
             seed = SEED_BASE + gid * 100000 + i
             try:
                 s = gen_series(length, spec, seed)

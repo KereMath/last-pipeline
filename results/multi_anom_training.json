@@ -3,70 +3,70 @@
     "model_name": "multi_collective_anomaly",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 1.0,
+      "LightGBM": 0.9949748743718593,
       "XGBoost": 0.9949748743718593,
-      "MLP": 0.9753694581280788
+      "MLP": 0.9393939393939394
     },
     "test_f1": 0.995,
     "test_acc": 0.995,
     "pos": 1000,
-    "neg": 999,
+    "neg": 996,
     "n_features": 777
   },
   "mean_shift": {
     "model_name": "multi_mean_shift",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9950248756218906,
-      "XGBoost": 0.9950248756218906,
-      "MLP": 0.9949748743718593
+      "LightGBM": 0.9468599033816425,
+      "XGBoost": 0.9326923076923077,
+      "MLP": 0.79
     },
-    "test_f1": 0.9975,
-    "test_acc": 0.9975,
+    "test_f1": 0.9333,
+    "test_acc": 0.9325,
     "pos": 1000,
-    "neg": 999,
+    "neg": 996,
     "n_features": 777
   },
   "point_anomaly": {
     "model_name": "multi_point_anomaly",
-    "best_clf": "XGBoost",
+    "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9950248756218906,
-      "XGBoost": 1.0,
-      "MLP": 0.9949748743718593
+      "LightGBM": 0.9850746268656716,
+      "XGBoost": 0.9801980198019802,
+      "MLP": 0.9556650246305419
     },
-    "test_f1": 0.9751,
-    "test_acc": 0.975,
-    "pos": 999,
-    "neg": 1000,
+    "test_f1": 0.9899,
+    "test_acc": 0.99,
+    "pos": 1000,
+    "neg": 996,
     "n_features": 777
   },
   "trend_shift": {
     "model_name": "multi_trend_shift",
     "best_clf": "LightGBM",
     "val_scores": {
-      "LightGBM": 0.9950248756218906,
-      "XGBoost": 0.99,
-      "MLP": 0.99
+      "LightGBM": 0.9543147208121827,
+      "XGBoost": 0.9441624365482234,
+      "MLP": 0.9073170731707317
     },
-    "test_f1": 0.99,
-    "test_acc": 0.99,
+    "test_f1": 0.9258,
+    "test_acc": 0.9275,
     "pos": 1000,
-    "neg": 1000,
+    "neg": 996,
     "n_features": 777
   },
   "variance_shift": {
     "model_name": "multi_variance_shift",
-    "best_clf": "LightGBM",
+    "best_clf": "XGBoost",
     "val_scores": {
-      "LightGBM": 1.0,
-      "XGBoost": 0.9950248756218906,
-      "MLP": 0.9603960396039604
+      "LightGBM": 0.9795918367346939,
+      "XGBoost": 0.9949748743718593,
+      "MLP": 0.9
     },
-    "test_f1": 1.0,
-    "test_acc": 1.0,
+    "test_f1": 0.962,
+    "test_acc": 0.9625,
     "pos": 1000,
-    "neg": 999,
+    "neg": 996,
     "n_features": 777
   }
 }
