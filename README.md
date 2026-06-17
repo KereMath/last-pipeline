@@ -9,6 +9,27 @@ Hocaların verdiği `datasets.md` kaynaklarındaki **39 ground-truth dosya** üz
 
 ---
 
+## 0. Özet — Problem, Yaklaşım, Yapılanlar
+
+**Problem.** Verilen bir zaman serisini, taksonomiye göre sınıflandır: **base tipi** (stationary / deterministic_trend / stochastic_trend / volatility) **+ içerdiği anomaliler** (collective / mean_shift / point / trend_shift / variance_shift). Girdi: ham seri → Çıktı: `(base, [anomaliler])`.
+
+**Neden sentetik eğitim?** Etiketli gerçek zaman serisi kıt; `betise` ile **kontrollü ve birebir etiketli** 34.000 seri üretip model bu denetimli sinyalle eğitiliyor, sonra **hiç görmediği 39 gerçek seride** (datasets.md kaynakları: Nelson-Plosser, Brockwell, Shumway, JMulTi, TCPD, Bai-Perron) test ediliyor.
+
+**Yaklaşım.** Hiyerarşik pipeline: tsfresh (777 feature) → **14 binary model** (1 gate + 3 base + 5 single-anom + 5 multi-anom) → 805-boyutlu meta-vektör → **7 meta-learner** (base 5-class + 5 anom + router) → eşik/blend karar mantığı. Detay §1.
+
+**Bu çalışmada yapılanlar (kronolojik):**
+1. Eksik multi-anomali grupları tamamlandı → **C(5,2)=10 ikili kombinasyonun tamamı** (G30-G34 eklendi, 29→34 grup).
+2. Veri zenginleştirildi: katmanlı uzunluk (50-400), trend_shift 3 tipi, çeşitli anomali ölçekleri.
+3. 34.000 seri yeniden üretildi, tüm pipeline raw single-view ile yeniden eğitildi + threshold sweep.
+4. **3 feature-mühendisliği yaklaşımı denendi ve elendi** (kanıtla): dual-view (detrend/deseason residual), hibrit klasik test feature (ADF/KPSS/Zivot-Andrews/ruptures), ölçek ayarı.
+5. Teşhis (PCA/LDA/kNN + eşik probu) ile zayıf sınıfların kök nedeni kanıtlandı; baseline'lar eklendi.
+
+**Sonuç.** Gerçek veride **base tespiti güçlü (%85)**, tam eşleşme (base+anomali) %28 (11/39). Sentetik eğitimde FULL %70.6. Basit ADF+KPSS baseline'ı stationarity'de %87 (pipeline ile başa baş) → pipeline'ın katma değeri **tipli anomali + çok-sınıflı base** ayrımında.
+
+**Ana bulgu (dürüst).** Kalan hata **veri miktarı değil, yapısal**: sentetik→gerçek **domain gap** (örn. Nelson-Plosser trend_shift sinyali modelde yok — üstelik ZA testi de 11'den 3'ünde reddediyor, yani GT'nin kendisi tartışmalı) ve feature uzayında içsel sınıf örtüşmeleri. Bu sınır 3 farklı feature yaklaşımıyla denendi, hiçbiri kapatamadı — tezin en sağlam, tekrarlı kanıtlanmış bulgusu.
+
+---
+
 ## 1. Pipeline Mimarisi
 
 ```
